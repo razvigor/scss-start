@@ -1,0 +1,31 @@
+@use './scss/mixins';
+@use './scss/variables';
+@use './scss/functions';
+@use 'sass:math';
+
+nav ul {
+	@include mixins.horizontal-list;
+}
+.mail-icon {
+	@include mixins.bcg-image(url('/images/mail.svg'), 0);
+}
+.sidebar {
+	float: left;
+	margin-left: functions.pow(4, 3) * 1%;
+}
+article[role='main'] {
+	width: math.div(600px, 960px) * 100%;
+}
+$widths: 50px, 30px, 100px;
+$min-value: math.min($widths...);
+.pulse {
+	width: $min-value;
+	@include mixins.animation(pulse, 3s, infinite) {
+		from {
+			background-color: green;
+		}
+		to {
+			background-color: red;
+		}
+	}
+}
